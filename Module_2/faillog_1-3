@@ -1,0 +1,38 @@
+E1
+Try searching on two “dream data” databases
+First was an ancient epigraph database (http://edh-www.adw.uni-heidelberg.de/inschrift/suche)
+I know no latin 
+The link to the latin dictionary didn’t work so I had to google a new one (http://latin-dictionary.net/definition/26055/lux-lucis)
+Ended up looking up word “lux” which means day
+Thought it’d be interesting to investigate the context in which the word would be used – as in, if it’d be used for purely record keep (died this day) or more in a poetic sense.
+There were a lot of search options but since I had nothing specific in mind I just did a simple string search
+(http://edh-www.adw.uni-heidelberg.de/inschrift/suche?hd_nr=&land=&fo_antik=&fo_modern_fundstelle=&literatur=&dat_jahr_a=&dat_jahr_e=&hist_periode=&atext1=lux&bool=AND&atext2=&sort=hd_nr&anzahl=20)
+Just from quickly looking over the data it appears the majority of it is within the Italian Peninsula 
+In addition, a lot of the results seemed to be referring to names, not just the word alone. Could be interesting thread to pursue
+Second database the Commonwealth war graves commission database (https://www.cwgc.org/find/find-war-dead)
+I searched my last name (Anderson) and as predicted given my common name, I got a ton of results (3607 to be precise).  (https://www.cwgc.org/find/find-war-dead/results?lastName=Anderson)
+Downloaded the results and uploaded to this folder
+Not really that interesting since with so many results and knowing my family is American, unlikely to find anyone very closely related to me (and looking would take forever)
+ From here I logged into the DH box, and using nano (which we set up last week) I made a quick log about my search and results. This file has also been uploaded here.
+
+
+E2
+Start with Ian Milligan’s tutorial on wget here (https://programminghistorian.org/en/lessons/automated-downloading-with-wget#step-two-learning-about-the-structure-of-wget--downloading-a-specific-set-of-files)
+Not too difficult to understand, just a matter of learning the exact commands
+Taking a while to download 
+Seems to be having some difficulties connecting with the site 
+“HTTP request sent, awaiting response…” has been there for about 10 min now so I’m just going to move on and check back on this exercise later
+Okay after 35 min I’m back to finish this up
+Pretty simple to follow the instructions on the website and post python code in nano
+Now just have to wait for these files to finish up as I transcribe exercise 3
+This one only took 5 min yay! 
+Uploading files to github
+
+E3
+Well while my exercise 2 documents are taking 5 years to load, might as well start on the tei exercise
+I can already tell that this one is going to take a while…
+Found a page towards the end about the legal status of slaves in Jamaica (really the lack thereof) that I’ve chosen to transcribe (pg 106)
+Using sublime to transcribe it
+Encoding I’m a bit confused, not so much for the people/place criteria (those are pretty straightforward) but the claims criteria
+For instance, my page the header contains the claim that the evidence of slaves in Jamaica was inadmissible in courts, and then the rest of the paragraph just restates this with examples
+Not sure if I’m supposed to encode it every time it  makes the same claim (aka every sentence) so I only encoded the header
