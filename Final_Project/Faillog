@@ -1,0 +1,116 @@
+Final Faillog
+STEP 0 – CHOOSING PROJECT AND OBTAINING DATA 
+Chose to make my own digital history work, from the 14th Canadian Hospital War Diaries database
+http://collectionscanada.gc.ca/pam_archives/index.php?fuseaction=genitem.displayItem&lang=eng&rec_nbr=2005110&rec_nbr_list=3366167,3203123,2005097,2005100,2005101,2005099,2005096,2005110,2005108,2005106
+Data from both 10th Canadian Stationary Hospital and the 14th Canadian General Hospital
+From cursory reading of the image files, something that caught my eye was nurses on leave
+Seemingly quite rare
+Perhaps by analyzing when nurses were on leave, better idea of the life of Canadian nurses during the first world war
+Background reading, difference between types of hospitals (conditions varied)
+https://www.bac-lac.gc.ca/eng/discover/military-heritage/first-world-war/canada-nursing-sisters/Pages/caregiving-on-the-front.aspx#f
+Stationary and general hospitals did different work than field hospitals, different conditions
+I found on zulip that other students (Lauren Rollit, Amanda Ngan and Alexei Tipenko) had already transcribed the diaries to .txt format. Shoutout to them for doing all that work cleaning up!
+https://github.com/laurenrollit/hist3814o-final-project
+Downloaded text files from github as a zip folder and extracted it
+
+STEP 1 – ANALYSIS WITH ANTCONC
+Because they were all separate files, the first program that came to mind to sift through it was AntConc
+http://www.laurenceanthony.net/software/antconc/
+Makes it very easy to search for specific words from multiple documents
+Click File > Open Directory to import the entire folder of .txt documents
+Search for leave by typing in “?eave” in word search bar (? allows the letter to be replaced by any single character, in this case so both capital and lower case “leave” would show up
+Under concordance tab lists every single incident of the word leave
+Got 34 hits from both nurses and officers
+I increased the search window size to show more context (aka the full entries)
+Helpfully also displays which file each hit came from, useful for information only provided at top of page (like what hospital the entry is from) 
+The Concordance Plot tab provides more information on this, displaying how many hits each page had and where they were on the document
+
+STEP 2 -  INPUTTING TO EXCEL
+Now it was time to format data for further analysis in other programs
+Due to the relatively low number of hits, I decided to input the exact data I wanted manually into a spreadsheet using Excel (apologies for giving in to Microsoft, but I learned in the previous modules that the better excel replacement did not work on my computer)
+The reason for this is because with so few hits in 80 pages, it is more time effective to add to a new document rather than use regex or something to take away everything else
+Also in the interest of consistency, since from AntConc I found the exact sentence structure varied, the amount of information given varied
+This way I could input the exact data I wanted in the same format every time, and omit when necessary
+Basically, since the data was so small I had the means to make as close as I could to a “Dream Case” spreadsheet
+I wanted to focus on the lives of the nurses themselves and not the officers, so I made the decision to omit any data about the officers
+I also chose to omit entries at the end that only listed the number of nurses on leave at that moment, although I saved that data separately for further analysis and comparison for later
+I also made the decision to input two nurses going on leave at the same time as separate entries, but mark them with an asterisk for further analysis
+Now, the important thing was to figure out what data I wanted to find
+I decided on the following tabs:
+FILE (for my own organization)
+ENTRY DATE 
+HOSPITAL
+NAME (of nurse)
+START DATE
+END DATE
+DAYS (number)
+REASON (if given)
+
+I then inputted the data manually as displayed in AntConc
+Should note that I had to make sure the dates tab entered as text or else excel would automatically try to change them to incorrect dates (ie, 12/2/17 or February 12th, 1917 would be automatically turned into December 2, 2017 ).  Accomplished this by following tutorial here
+https://support.office.com/en-us/article/stop-automatically-changing-numbers-to-dates-452bd2db-cc96-47d1-81e4-72cec11c4ed8
+As I went on, I decided the need for another category…
+MULTIPLE (how many nurses left on leave the same time, yes or no then number)
+… Since I found so many nurses went on leave at the same time. This would allow me to analyze how many went on leave together and how frequently
+I also added:
+HIT (number)
+So that I could keep track of the hit number as it corresponded to AntConc. This was mainly so I wouldn’t miss any data, but also so I could tell which nurses were linked in the same entry easier
+I also deleted the “REASON” column since so few were given reasons, it would result in a lot of empty cells
+After inputting this data from AntConc, I decided to find a calendar for 1917 in order to not only calculate days on leave but the weekdays they fell upon as well
+https://www.timeanddate.com/calendar/?year=1917&country=27
+A couple things of note I found interesting. For one, although the days of the week in which they left changed, for the first half of the data sets almost all leaves fell as full weeks (ex Sunday to Sunday), usually for 2 weeks at a time
+However, halfway through, leaves take a sudden change to being mostly 17 days in length. 
+In addition, the missing dates of entry were all in 1918. Apparently, the turn of the year brought a change in note taking style
+I then went through some documents in the original archive in order to confirm  couple of empty date cells (The cleaned pages start at 8029, so to find the corresponding archive image one has to subtract 8029)
+This revealed that the logs actually became quite late in February, before being caught up in April
+
+STEP 3 – CHECK DATA WITH OPEN REFINE
+Now that my data is inputted, I’m going to double check for any errors with OpenRefine
+http://openrefine.org/
+The first thing I do is convert the names column to a text facet, like we did in class (Click the column header > Facet > Text Facet). 
+I then clicked Cluster on the left sidebar in order to check for any inconsistent names
+Ends up there was! O.K. Ismay was entered under both upper and lowercase in the log. To fix this, I selected “Merge Selected & Re-Cluster”
+Tada! No more entries to cluster. However, I then double checked my entries for other names entered in lowercase and found one (M. Tait) and edited the cell to (M. TAIT) for consistency
+I now sorted the names by count (aka how frequently they appeared) and found that only three nurses took more than one leave of absence over the year. Interesting! Although this does not necessarily mean they took the most days leave. I will look at this later….
+For now, analyzing columns one by one. I deleted the “HIT” column as I no longer need to refer to the AntConc data placement (and this would only confuse those viewing the project). 
+I then turned the multiple column into a text facet and counted, which revealed that 10 nurses went on leave alone, 10 went on leave at the same time as one other nurse, and only 6 went on leave at the same time as two other nurses.
+To me, the frequency of taking leaves in groups seems evident that leave was highly regulated and not personalized in nature (aka, you got leave when you got leave, not when you requested it). 
+Next I analyzed the files in which nurses leave was taken. 
+Leave of nurses was only mentioned in 9 files out of 80, meaning leave was either very infrequent or not always recorded.  Within the files mentioned, the average number of nurses on leave mentioned was 2.8. This is likely a result of either the nurses being given leave in groups, or perhaps only certain logs bothering to mention leave at all. 
+I couldn’t figure out how to get the timeline facet to work so I skipped the date section for now, but I did analyze both the starting and ending days of the week for leave.  Although Monday was most common for both (and Wed overall least common) there was less of a pattern than I expected considering the regimented nature of leave. Perhaps this is due to the frequency of 17 day leaves in the later part of the year.
+For the number of days column,  I tried to get OpenRefine to recognize the numbers as numbers by following this guide (https://github.com/OpenRefine/OpenRefine/wiki/Faceting) but somehow I only got errors. However, the most important thing to check in open refine was the frequency of each occurrence, which I was able to do in text facets anyways. 
+As predicted, 14 day leaves were by far the most popular, followed by the odd 17 day leaves. After this 3 week (21 day) and 1 week (7) day leaves were frequent, followed by other day amounts (likely leaves due to special circumstances). 
+Update: I have now figured out how to transform the days to number! Ends up all I had to do was click on the header>Edit Cells > Common Transformations > to number. Hooray! I now have a graph plotting the numbers values
+I tried doing this to the dates column too but, of course, it sent it to 2017 and screwed up the format (since it was written in date/month/year instead of month/date/year)
+Ends up undoing things is harder than it looks, the tab shows everything that has been done but not how to undo it.
+Figured it out thanks to this tutorial (https://github.com/OpenRefine/OpenRefine/wiki/History) all you have to do is click on the previous state! Very useful
+Now all I have to do is delete the extra column at the end and export for further transformations!
+Exported! Now to visualize the data and present it on my blog
+
+
+STEP 4 – VISUALIZE IN WORDPRESS
+Now the question is how to visualize the data I found
+My first thought was to try to put it into a calendar in order to display when each nurse went on leave
+I went back to time and date in order to make a custom calendar
+https://www.timeanddate.com/calendar/custommenu.html
+However, while it was easy to create a blank calendar for 1917-1918, making one with custom events was pretty much impossible
+You’d have to click back 100 times (since of course it automatically makes events for 2018) for every single instance of leave and could only make 1 year (not require year and a half).
+So  I decided to move on. 
+My next thought was to use a wordpress plugin calendar, as that would not only display the data but potentially make it interactive.
+However, all the calendars I could find only posted current and future events, not really what I was looking for.
+I downloaded a history timeline plugin, but not only was it confusing but didn’t display my data very well.
+Finally, I had the idea to use graphs and charts of the data analysis I did using OpenRefine in a wordpress plugin to more seamlessly present my ideas
+Used Visualizer Lite to create graphs and charts
+https://wordpress.org/plugins/visualizer/
+
+Of course, manually entering data was for pro edition only
+So have to reformat data from openrefine in excel using csv format
+Then you just have to import it and it’ll automatically make a graph for you!
+Decided to make vizualizations for the following
+Days on Leave (bar chart)
+Leaves by Month
+Days Of Week Leave Starts
+Days Of Week Leave Ends
+# of Days each Nurse was on Leave (Column chart)
+Number of Nurses on Leave Together (Bar Chart)
+Now just a matter of writing it!
